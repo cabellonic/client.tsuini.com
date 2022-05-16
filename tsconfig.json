@@ -10,6 +10,7 @@
 			"@models/*": ["app/models/*"],
 			"@routes/*": ["app/routes/*"],
 			"@styles/*": ["app/styles/*"],
+			"@scss/*": ["app/styles/variables/*"],
 			"@modules/*": ["modules/*"],
 			"@pages/*": ["pages/*"]
 		},

@@ -13,6 +13,7 @@ export default defineConfig({
 			'@models': `${path.resolve(__dirname, 'src/app/models')}`,
 			'@routes': `${path.resolve(__dirname, 'src/app/routes')}`,
 			'@styles': `${path.resolve(__dirname, 'src/app/styles')}`,
+			'@scss': `${path.resolve(__dirname, 'src/app/styles/variables')}`,
 			'@modules': `${path.resolve(__dirname, 'src/modules')}`,
 			'@pages': `${path.resolve(__dirname, 'src/pages')}`,
 		},
