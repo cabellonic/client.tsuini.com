@@ -1,0 +1,33 @@
+@import '@scss/colors';
+@import '@scss/spacing';
+
+.main_menu {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.logo {
+	width: 35px;
+	height: 35px;
+	object-fit: cover;
+}
+
+.site_name {
+	font-size: x-large;
+}
+
+.menu_item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: $spacing-4;
+	color: inherit;
+	text-decoration: none;
+	height: 100%;
+	gap: $spacing-2;
+
+	&:hover {
+		background-color: $clr-primary-dk;
+	}
+}
