@@ -1,0 +1,12 @@
+@import '@scss/colors';
+@import '@scss/spacing';
+
+.header {
+	background-color: $clr-primary;
+	color: $clr-text-accent;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: $spacing-4;
+	height: 70px;
+}
