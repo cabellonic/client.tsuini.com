@@ -1,0 +1,9 @@
+// $clr-primary: rgb(54, 64, 121);
+$clr-primary: rgb(3, 66, 100);
+$clr-primary-lt: lighten($clr-primary, 7%);
+$clr-primary-ltr: lighten($clr-primary-lt, 5%);
+$clr-primary-dk: darken($clr-primary, 7%);
+$clr-primary-dkr: darken($clr-primary-dk, 5%);
+
+$clr-text: rgb(26, 27, 39);
+$clr-text-accent: rgb(255, 255, 255);
