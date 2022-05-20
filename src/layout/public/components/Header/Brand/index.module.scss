@@ -1,0 +1,27 @@
+@import '@scss/colors';
+@import '@scss/mixin';
+@import '@scss/spacing';
+
+.brand {
+	align-items: center;
+	color: $clr-text-accent;
+	display: flex;
+	gap: $spacing-2;
+	justify-content: center;
+	padding: $spacing-1;
+	text-decoration: none;
+
+	@include md() {
+		padding: $spacing-4;
+	}
+}
+
+.logo {
+	height: 35px;
+	object-fit: cover;
+	width: 35px;
+}
+
+.site_name {
+	font-size: x-large;
+}

@@ -1,0 +1,23 @@
+@import '@scss/colors';
+@import '@scss/components';
+
+.main_menu {
+	align-items: center;
+	display: flex;
+	height: 100%;
+}
+
+.menu_wrapper {
+	align-items: center;
+	display: flex;
+	height: 100%;
+}
+
+.menu_mobile {
+	background-color: $clr-primary-dk;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	top: $header-height;
+	width: 320px;
+}
