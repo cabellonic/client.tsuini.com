@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdMenu } from 'react-icons/io';
 // Styles
 import styles from './ToggleButton.module.scss';
 
@@ -13,7 +14,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ isMenuOpen, onClick }) => {
 			className={`${styles.toggle} ${isMenuOpen ? styles.active : ''}`}
 			onClick={onClick}
 		>
-			|||
+			<IoMdMenu className={styles.icon} />
 		</span>
 	);
 };
