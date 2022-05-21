@@ -1,0 +1,38 @@
+@import '@scss/colors';
+@import '@scss/components';
+@import '@scss/spacing';
+@import '@scss/mixin';
+
+.slider {
+	background-color: $clr-primary-ltr;
+	height: $slider-height;
+}
+
+.slide_wrapper {
+	padding: $spacing-6;
+}
+
+.thumbnails {
+	margin: 0 auto;
+	max-width: 1100px;
+	padding: $spacing-2;
+
+	@include md() {
+		padding: $spacing-4;
+	}
+}
+
+.thumbnail_wrapper {
+	& > div {
+		background-color: $clr-primary-ltr;
+		transition: background-color 0.2s ease-in-out;
+	}
+
+	&.thumbnail_active > div {
+		background-color: $clr-primary-dk;
+	}
+
+	& > div:hover {
+		background-color: $clr-primary;
+	}
+}

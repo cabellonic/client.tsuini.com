@@ -1,0 +1,33 @@
+@import '@scss/colors';
+@import '@scss/spacing';
+@import '@scss/mixin';
+
+.thumbnail {
+	cursor: pointer;
+	width: 90%;
+	min-height: 5px;
+	margin: 0 auto;
+
+	@include md() {
+		padding: $spacing-2;
+	}
+}
+
+.thumbnail_text {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	display: none;
+	font-size: 0.75rem;
+	color: $clr-text-accent;
+	line-height: 1rem;
+	height: 2rem;
+	align-items: center;
+	overflow: hidden;
+	text-align: center;
+	text-align: center;
+	text-overflow: ellipsis;
+
+	@include md() {
+		display: -webkit-box;
+	}
+}
