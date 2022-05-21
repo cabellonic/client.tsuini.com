@@ -1,19 +1,20 @@
 import React from 'react';
 // Components
 import Helmet from '@/common/components/Helmet';
+import Slider from './components/Slider';
 
 type HomePageProps = {};
 
 const HomePage: React.FC<HomePageProps> = () => {
 	return (
-		<section>
+		<main>
 			<Helmet
 				seo={{
 					title: 'Home - Tsuini.com',
 				}}
 			/>
-			Home page
-		</section>
+			<Slider />
+		</main>
 	);
 };
 
