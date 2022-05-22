@@ -1,5 +1,6 @@
 @import '@scss/colors';
 @import '@scss/components';
+@import '@scss/fontSize';
 @import '@scss/mixin';
 @import '@scss/spacing';
 
@@ -30,7 +31,7 @@
 }
 
 .icon {
-	font-size: 1.5rem;
+	font-size: $fs-2xl;
 }
 
 .count {

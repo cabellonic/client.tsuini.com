@@ -1,12 +1,16 @@
 @import '@scss/colors';
 @import '@scss/spacing';
 @import '@scss/mixin';
+@import '@scss/fontSize';
+
+$thumbnail-line-height: 1rem;
+$thumbnail-lines: 2;
 
 .thumbnail {
 	cursor: pointer;
-	width: 90%;
-	min-height: 5px;
 	margin: 0 auto;
+	min-height: 5px;
+	width: 90%;
 
 	@include md() {
 		padding: $spacing-2;
@@ -15,15 +19,13 @@
 
 .thumbnail_text {
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	display: none;
-	font-size: 0.75rem;
+	-webkit-line-clamp: $thumbnail-lines;
 	color: $clr-text-accent;
-	line-height: 1rem;
-	height: 2rem;
-	align-items: center;
+	display: none;
+	font-size: $fs-xs;
+	height: calc($thumbnail-line-height * $thumbnail-lines);
+	line-height: $thumbnail-line-height;
 	overflow: hidden;
-	text-align: center;
 	text-align: center;
 	text-overflow: ellipsis;
 
