@@ -9,12 +9,15 @@ $clr-text-accent: rgb(255, 255, 255);
 
 $clr-alert: rgb(210, 20, 20);
 
-$clr-placeholder: linear-gradient(
+$clr-placeholder: rgb(6, 46, 68);
+$clr-placeholder-dk: darken($clr-placeholder, 7%);
+$clr-placeholder-dkr: darken($clr-placeholder-dk, 5%);
+$bg-placeholder: linear-gradient(
 	130deg,
-	rgba($clr-primary-dkr, 0) 33.333%,
-	rgba($clr-primary-dk, 0.051),
-	rgba($clr-primary, 0.2) 47%,
-	rgba($clr-primary, 0.2) 53%,
-	rgba($clr-primary-dk, 0.102),
-	rgba($clr-primary-dkr, 0) 66.666%
+	rgba($clr-placeholder-dkr, 0) 33.333%,
+	rgba($clr-placeholder-dk, 0.051),
+	rgba($clr-placeholder, 0.2) 47%,
+	rgba($clr-placeholder, 0.2) 53%,
+	rgba($clr-placeholder-dk, 0.102),
+	rgba($clr-placeholder-dkr, 0) 66.666%
 );
