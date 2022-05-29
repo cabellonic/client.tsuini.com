@@ -13,8 +13,7 @@ export const useWindowResize = () => {
 		height: undefined,
 	});
 
-	const isMobile =
-		windowSize.width && windowSize.width <= __MOBILE_RESOLUTION__;
+	const isMobile = windowSize.width && windowSize.width < __MOBILE_RESOLUTION__;
 
 	useEffect(() => {
 		setWindowSize({
