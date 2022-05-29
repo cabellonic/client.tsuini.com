@@ -1,4 +1,5 @@
 @import '@scss/colors';
+@import '@scss/components';
 @import '@scss/fontSize';
 @import '@scss/mixin';
 @import '@scss/spacing';
@@ -9,7 +10,7 @@ $thumbnail-lines: 2;
 .thumbnail {
 	cursor: pointer;
 	margin: 0 auto;
-	min-height: 5px;
+	min-height: $slider-thumb-min-height;
 	width: 90%;
 
 	@include md() {

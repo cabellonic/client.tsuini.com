@@ -1,0 +1,44 @@
+@import '@scss/colors';
+@import '@scss/components';
+@import '@scss/fontSize';
+@import '@scss/mixin';
+@import '@scss/spacing';
+
+.slide_placeholder {
+	background: $clr-primary-ltr;
+	height: $slider-height;
+	overflow: hidden;
+	position: relative;
+}
+
+.thumbs_placeholder {
+	height: auto;
+	margin: 0 auto;
+	max-height: $slider-thumb-max-height;
+	max-width: $max-wrapper;
+	padding: $spacing-2;
+
+	@include md() {
+		padding: $spacing-4;
+	}
+}
+
+.thumbs_placeholder_wrapper {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+}
+
+.thumb_placeholder {
+	background-color: $clr-primary-ltr;
+	cursor: pointer;
+	margin: 0 auto;
+	min-height: $slider-thumb-min-height;
+	overflow: hidden;
+	position: relative;
+	width: 18%;
+
+	@include md() {
+		height: calc($slider-thumb-max-height - $spacing-4 - $spacing-4);
+	}
+}

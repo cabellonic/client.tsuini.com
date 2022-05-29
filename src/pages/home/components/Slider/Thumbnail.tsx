@@ -1,11 +1,11 @@
 import React from 'react';
 // Models
-import { ISlide } from '@/app/models/Slide';
+import { SlideEntry } from '@models/Slide';
 // Styles
 import styles from './Thumbnail.module.scss';
 
 type ThumbnailProps = {
-	slide: ISlide;
+	slide: SlideEntry;
 };
 
 const Thumbnail: React.FC<ThumbnailProps> = ({ slide }) => {
