@@ -1,4 +1,3 @@
-// $clr-primary: rgb(54, 64, 121);
 $clr-primary: rgb(3, 66, 100);
 $clr-primary-lt: lighten($clr-primary, 7%);
 $clr-primary-ltr: lighten($clr-primary-lt, 5%);
@@ -9,3 +8,13 @@ $clr-text: rgb(26, 27, 39);
 $clr-text-accent: rgb(255, 255, 255);
 
 $clr-alert: rgb(210, 20, 20);
+
+$clr-placeholder: linear-gradient(
+	130deg,
+	rgba($clr-primary-dkr, 0) 33.333%,
+	rgba($clr-primary-dk, 0.051),
+	rgba($clr-primary, 0.2) 47%,
+	rgba($clr-primary, 0.2) 53%,
+	rgba($clr-primary-dk, 0.102),
+	rgba($clr-primary-dkr, 0) 66.666%
+);
