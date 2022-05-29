@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// Data
-import { menu } from '@/app/data/menu';
 // Styles
 import styles from './MenuItems.module.scss';
 
 const MenuItems: React.FC = () => {
 	const location = useLocation();
+	const menu: any = []; // Temporal fix
+
 	return (
 		<>
-			{menu.map(({ label, path }) => {
+			{menu.map(({ label, path }: { label: string; path: string }) => {
 				const isActive = location.pathname.includes(path);
 				return (
 					<Link
