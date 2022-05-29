@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"strict": true,
 		"target": "ESNext",
 		"baseUrl": "./src",
 		"paths": {
@@ -8,6 +9,7 @@
 			"@components/*": ["common/components/*"],
 			"@hooks/*": ["common/hooks/*"],
 			"@models/*": ["app/models/*"],
+			"@services/*": ["common/services/*"],
 			"@routes/*": ["app/routes/*"],
 			"@styles/*": ["app/styles/*"],
 			"@scss/*": ["app/styles/variables/*"],
@@ -20,10 +22,13 @@
 		"skipLibCheck": true,
 		"esModuleInterop": false,
 		"allowSyntheticDefaultImports": true,
-		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"module": "ESNext",
 		"moduleResolution": "Node",
+		"noUnusedLocals": true,
+		"noImplicitAny": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"noEmit": true,
