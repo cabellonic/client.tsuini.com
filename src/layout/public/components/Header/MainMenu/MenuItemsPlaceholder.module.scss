@@ -1,0 +1,13 @@
+@import '@scss/spacing';
+@import '@scss/mixin';
+
+.menu_item_placeholder {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+
+	@include md() {
+		height: 2rem;
+		width: 350px;
+	}
+}
