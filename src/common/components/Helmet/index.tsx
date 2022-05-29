@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet as ReactHelmet } from 'react-helmet';
 // Models
-import { ISEO } from '@models/SEO';
+import { SEO } from '@models/SEO';
 
 type HelmetProps = {
-	seo: ISEO;
+	seo: SEO;
 };
 
 const Helmet: React.FC<HelmetProps> = ({ seo }) => {
