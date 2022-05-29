@@ -1,5 +1,5 @@
 export interface SlideEntry {
-	id: number;
+	id: string;
 	title: string;
 	image: string;
 	link: string;
