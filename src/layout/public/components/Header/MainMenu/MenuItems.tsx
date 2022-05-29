@@ -13,7 +13,7 @@ const MenuItems: React.FC = () => {
 
 	if (error) return <>Error al cargar el menu...</>;
 
-	if (!isLoading) return <MenuItemsPlaceholder />;
+	if (isLoading) return <MenuItemsPlaceholder />;
 
 	return (
 		<>
