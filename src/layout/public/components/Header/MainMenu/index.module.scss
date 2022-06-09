@@ -1,5 +1,6 @@
 @import '@scss/colors';
 @import '@scss/components';
+@import '@scss/zIndex';
 
 .main_menu {
 	align-items: center;
@@ -20,4 +21,5 @@
 	position: fixed;
 	top: $header-height;
 	width: 320px;
+	z-index: $z-menu;
 }
