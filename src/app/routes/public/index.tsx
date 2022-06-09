@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+// Layout
+import PublicLayout from '@layout/public';
 // Pages
 import HomePage from '@pages/home';
-import PublicLayout from '@/layout/public';
 
 type PublicRoutesProps = {};
 
