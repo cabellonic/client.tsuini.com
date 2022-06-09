@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 import { IoHeart, IoHeartOutline } from 'react-icons/io5';
 // Service
-import * as trackService from '@services/track.service';
+import * as spotifyService from '@services/spotify.service';
 // Styles
 import styles from './index.module.scss';
 
@@ -17,7 +17,7 @@ const PlayerSongInfo: React.FC<PlayerSongInfoProps> = () => {
 		const fetchSaved = async () => {
 			if (!playbackState?.track_window.current_track.id) return;
 			const trackId = playbackState.track_window.current_track.id;
-			const saved = await trackService.checkSaveStatus(trackId);
+			const saved = await spotifyService.checkSaveStatus(trackId);
 			setIsSaved(saved);
 		};
 		fetchSaved();
@@ -26,9 +26,9 @@ const PlayerSongInfo: React.FC<PlayerSongInfoProps> = () => {
 	const handleSave = async () => {
 		if (!playbackState?.track_window.current_track.id) return;
 		const trackId = playbackState.track_window.current_track.id;
-		if (!isSaved) await trackService.saveTrack(trackId);
-		else await trackService.removeTrack(trackId);
-		setIsSaved(await trackService.checkSaveStatus(trackId));
+		if (!isSaved) await spotifyService.saveTrack(trackId);
+		else await spotifyService.removeTrack(trackId);
+		setIsSaved(await spotifyService.checkSaveStatus(trackId));
 	};
 
 	if (!playbackState) return <div className={styles.song}></div>;
