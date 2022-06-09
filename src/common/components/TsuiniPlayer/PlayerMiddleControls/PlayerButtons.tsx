@@ -12,7 +12,7 @@ import {
 	usePlaybackState,
 } from 'react-spotify-web-playback-sdk';
 // Services
-import * as spotifyService from '@services/spotify.service';
+import * as playerService from '@services/player.service';
 // Styles
 import styles from './PlayerButtons.module.scss';
 
@@ -22,7 +22,7 @@ const PlayerButtons: React.FC = () => {
 
 	const handleShuffle = async () => {
 		if (!playbackState) return;
-		await spotifyService.toggleShuffle(!playbackState.shuffle);
+		await playerService.toggleShuffle(!playbackState.shuffle);
 	};
 
 	const handleSkipBack = () => {
@@ -32,7 +32,7 @@ const PlayerButtons: React.FC = () => {
 
 	const handleRepeat = async () => {
 		if (!playbackState) return;
-		await spotifyService.toggleRepeat((playbackState.repeat_mode + 1) % 2);
+		await playerService.toggleRepeat((playbackState.repeat_mode + 1) % 2);
 	};
 
 	const handleSkipForward = () => {

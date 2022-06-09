@@ -4,7 +4,7 @@ import { usePlayerDevice } from 'react-spotify-web-playback-sdk';
 import PlayerButtons from './PlayerButtons';
 import ProgressBar from './ProgressBar';
 // Services
-import * as spotifyService from '@services/spotify.service';
+import * as playerService from '@services/player.service';
 // Styles
 import styles from './index.module.scss';
 
@@ -15,10 +15,8 @@ const PlayerController: React.FC<PlayerControllerProps> = () => {
 
 	useEffect(() => {
 		const setDevice = async () => {
-			try {
-				if (playerDevice?.device_id === undefined) return;
-				await spotifyService.setDevice(playerDevice.device_id);
-			} catch (error) {}
+			if (playerDevice?.device_id === undefined) return;
+			await playerService.setDevice(playerDevice.device_id);
 		};
 		setDevice();
 	}, [playerDevice?.device_id]);
