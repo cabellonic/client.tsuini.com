@@ -15,13 +15,13 @@ const PlayerSongInfo: React.FC<PlayerSongInfoProps> = () => {
 
 	useEffect(() => {
 		const fetchSaved = async () => {
-			if (!playbackState?.track_window.current_track.id) return;
+			if (!playbackState?.track_window?.current_track?.id) return;
 			const trackId = playbackState.track_window.current_track.id;
 			const saved = await spotifyService.checkSaveStatus(trackId);
 			setIsSaved(saved);
 		};
 		fetchSaved();
-	}, [playbackState?.track_window?.current_track.uri]);
+	}, [playbackState?.track_window?.current_track?.uri]);
 
 	const handleSave = async () => {
 		if (!playbackState?.track_window.current_track.id) return;
@@ -31,8 +31,9 @@ const PlayerSongInfo: React.FC<PlayerSongInfoProps> = () => {
 		setIsSaved(await spotifyService.checkSaveStatus(trackId));
 	};
 
-	if (!playbackState) return <div className={styles.song}></div>;
-	const song = playbackState.track_window.current_track;
+	const song = playbackState?.track_window?.current_track;
+
+	if (!song) return <div className={styles.song}></div>;
 
 	return (
 		<div className={styles.song}>
