@@ -1,14 +1,21 @@
+// Website colors
 $clr-primary: rgb(3, 66, 100);
 $clr-primary-lt: lighten($clr-primary, 7%);
 $clr-primary-ltr: lighten($clr-primary-lt, 5%);
 $clr-primary-dk: darken($clr-primary, 7%);
 $clr-primary-dkr: darken($clr-primary-dk, 5%);
 
+// Text colors
 $clr-text: rgb(26, 27, 39);
 $clr-text-accent: rgb(255, 255, 255);
 
+// Component colores
+$clr-player-buttons: rgb(85, 194, 253);
+
+// UI colors
 $clr-alert: rgb(210, 20, 20);
 
+// Placeholder colors
 $clr-placeholder: rgb(6, 46, 68);
 $clr-placeholder-dk: darken($clr-placeholder, 7%);
 $clr-placeholder-dkr: darken($clr-placeholder-dk, 5%);
@@ -22,7 +29,7 @@ $bg-placeholder: linear-gradient(
 	rgba($clr-placeholder-dkr, 0) 66.666%
 );
 
-// Brands
+// Brand colors
 $clr-spotify: rgb(29, 185, 84);
 $clr-spotify-lt: lighten($clr-spotify, 7%);
 $clr-spotify-ltr: lighten($clr-spotify-lt, 5%);
