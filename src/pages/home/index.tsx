@@ -1,6 +1,6 @@
 import React from 'react';
 // Components
-import Helmet from '@/common/components/Helmet';
+import Helmet from '@components/Helmet';
 import Slider from './components/Slider';
 
 type HomePageProps = {};
