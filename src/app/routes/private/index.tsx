@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+// Contexts
+import { UserContext } from '@contexts/user.context';
+// Layout
+import DashboardLayout from '@layout/dashboard';
 // Pages
-import DashboardLayout from '@/layout/dashboard';
-import DashboardPage from '@/pages/dashboard';
+import DashboardPage from '@pages/dashboard';
 
-type PrivateRoutesProps = {
-	user: boolean;
-};
+type PrivateRoutesProps = {};
 
-const PrivateRoutes: React.FC<PrivateRoutesProps> = ({ user }) => {
-	if (!user) return <Navigate to={'/'} replace />;
+const PrivateRoutes: React.FC<PrivateRoutesProps> = () => {
+	const { user } = useContext(UserContext);
+
+	if (!user || user.rank > 1) return <Navigate to={'/'} replace />;
 
 	return (
 		<DashboardLayout>
