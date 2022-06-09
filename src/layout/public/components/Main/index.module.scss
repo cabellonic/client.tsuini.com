@@ -1,0 +1,5 @@
+@import '@scss/components';
+
+.main_content {
+	min-height: calc(150vh - $header-height - 80px);
+}
