@@ -1,0 +1,45 @@
+@import '@scss/borderRadius';
+@import '@scss/colors';
+@import '@scss/fontSize';
+@import '@scss/spacing';
+
+.player_buttons {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	font-size: $fs-2xl;
+	gap: $spacing-4;
+	justify-content: center;
+}
+
+.button {
+	color: rgba($clr-text-accent, 0.65);
+	cursor: pointer;
+
+	&:hover {
+		color: $clr-text-accent;
+	}
+}
+
+.active {
+	color: rgba($clr-player-buttons, 0.75);
+
+	&:hover {
+		color: $clr-player-buttons;
+	}
+}
+.toggle_play {
+	background-color: $clr-text-accent;
+	border-radius: $border-radius-circle;
+	color: $clr-text;
+	cursor: pointer;
+	display: grid;
+	height: calc($fs-2xl + $spacing-3);
+	padding: $spacing-2;
+	place-content: center;
+	width: calc($fs-2xl + $spacing-3);
+
+	&:hover {
+		transform: scale(1.05);
+	}
+}

@@ -1,0 +1,54 @@
+@import '@scss/colors';
+@import '@scss/spacing';
+@import '@scss/borderRadius';
+
+.timer {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	justify-content: center;
+	gap: $spacing-2;
+	width: 100%;
+}
+
+.progress_bar_wrapper {
+	height: $spacing-2;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: $border-radius-max;
+	cursor: pointer;
+
+	&:hover {
+		.progress_bar {
+			background-color: $clr-primary-ltr;
+			&::after {
+				display: block;
+			}
+		}
+	}
+}
+
+.progress_bar {
+	height: 100%;
+	background-color: white;
+	border-radius: $border-radius-max;
+	position: relative;
+
+	&::after {
+		display: none;
+		content: '';
+		width: 1em;
+		height: 1em;
+		position: absolute;
+		right: -0.5em;
+		top: calc(-0.5em / 2);
+		border-radius: $border-radius-circle;
+		background-color: white;
+	}
+}
+
+.song_duration,
+.current_time {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

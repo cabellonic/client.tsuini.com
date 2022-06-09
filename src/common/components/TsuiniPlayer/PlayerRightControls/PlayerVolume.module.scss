@@ -1,0 +1,64 @@
+@import '@scss/borderRadius';
+@import '@scss/colors';
+@import '@scss/fontSize';
+@import '@scss/spacing';
+
+.volume {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: $spacing-2;
+
+	&:hover .sound_bar_wrapper {
+		.sound_bar {
+			background-color: $clr-primary-ltr;
+			&::after {
+				display: block;
+			}
+		}
+	}
+}
+
+.volume_icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: $fs-2xl;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.65);
+
+	&:hover {
+		color: $clr-text-accent;
+	}
+
+	&.active {
+		color: $clr-player-buttons;
+	}
+}
+
+.sound_bar_wrapper {
+	height: $spacing-2;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: $border-radius-max;
+	cursor: pointer;
+	width: 100px;
+}
+
+.sound_bar {
+	height: 100%;
+	background-color: white;
+	border-radius: $border-radius-max;
+	position: relative;
+
+	&::after {
+		display: none;
+		content: '';
+		width: 1em;
+		height: 1em;
+		position: absolute;
+		right: -0.5em;
+		top: calc(-0.5em / 2);
+		border-radius: $border-radius-circle;
+		background-color: white;
+	}
+}

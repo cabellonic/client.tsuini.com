@@ -1,0 +1,9 @@
+@import '@scss/spacing';
+
+.player_middle_controls {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	gap: $spacing-2;
+}

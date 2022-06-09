@@ -1,0 +1,62 @@
+@import '@scss/borderRadius';
+@import '@scss/colors';
+@import '@scss/fontSize';
+@import '@scss/spacing';
+
+$song-image-size: 55px;
+
+.song {
+	align-items: center;
+	display: flex;
+	flex-flow: wrap;
+	gap: $spacing-4;
+}
+
+.song_image_wrapper {
+	border-radius: $border-radius-base;
+	height: $song-image-size;
+	margin: 0;
+	overflow: hidden;
+	width: $song-image-size;
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}
+
+.song_info {
+	display: flex;
+	flex-flow: column;
+	max-width: calc(100% - $song-image-size - $fs-xl - $spacing-8);
+}
+
+.song_name {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	color: inherit;
+	display: -webkit-box;
+	overflow: hidden;
+	text-decoration: none;
+	text-overflow: ellipsis;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.song_artists {
+	font-size: 0.75em;
+	opacity: 0.5;
+}
+
+.save_in_favorites {
+	color: rgba($clr-text-accent, 0.65);
+	cursor: pointer;
+	font-size: $fs-xl;
+
+	&:hover {
+		color: $clr-text-accent;
+	}
+}

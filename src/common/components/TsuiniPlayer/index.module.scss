@@ -1,0 +1,37 @@
+@import '@scss/colors';
+@import '@scss/components';
+@import '@scss/spacing';
+@import '@scss/zIndex';
+
+.player {
+	position: fixed;
+	display: grid;
+	grid-template-columns: 0.3fr 0.7fr 0.3fr;
+	gap: $spacing-8;
+	align-items: center;
+	justify-content: space-between;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: $z-tsuini-player;
+	color: $clr-text-accent;
+	height: $player-height;
+	padding: $spacing-4;
+	background-color: $clr-primary-dkr;
+}
+
+.guest_message {
+	position: fixed;
+	display: flex;
+	bottom: 0;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	gap: $spacing-2;
+	left: 0;
+	right: 0;
+	color: $clr-text-accent;
+	min-height: $player-height;
+	padding: $spacing-4 $spacing-8;
+	background-color: $clr-primary-dkr;
+}
