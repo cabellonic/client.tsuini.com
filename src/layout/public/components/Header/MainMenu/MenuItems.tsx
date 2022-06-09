@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 // Components
 import MenuItemsPlaceholder from './MenuItemsPlaceholder';
 // Hooks
-import { useMenu } from '@/common/hooks/useMenu';
+import { useMenu } from '@hooks/useMenu';
 // Styles
 import styles from './MenuItems.module.scss';
 
