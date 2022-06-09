@@ -1,5 +1,6 @@
 @import '@scss/components';
 
 .main_content {
-	min-height: calc(150vh - $header-height - 80px);
+	min-height: calc(100vh - $header-height - $player-height);
+	margin-bottom: $player-height;
 }
