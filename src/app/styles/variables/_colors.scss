@@ -21,3 +21,10 @@ $bg-placeholder: linear-gradient(
 	rgba($clr-placeholder-dk, 0.102),
 	rgba($clr-placeholder-dkr, 0) 66.666%
 );
+
+// Brands
+$clr-spotify: rgb(29, 185, 84);
+$clr-spotify-lt: lighten($clr-spotify, 7%);
+$clr-spotify-ltr: lighten($clr-spotify-lt, 5%);
+$clr-spotify-dk: darken($clr-spotify, 7%);
+$clr-spotify-dkr: darken($clr-spotify-dk, 5%);
