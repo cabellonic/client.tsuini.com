@@ -1,0 +1,33 @@
+@import '@scss/colors';
+@import '@scss/spacing';
+
+.auth_menu {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	margin-right: $spacing-4;
+}
+
+.login_button {
+	align-items: center;
+	background-color: $clr-spotify;
+	border-radius: 9999px;
+	color: $clr-text-accent;
+	cursor: pointer;
+	display: flex;
+	gap: $spacing-2;
+	justify-content: center;
+	padding: $spacing-2 $spacing-4;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.1s ease-in-out;
+	user-select: none;
+
+	.icon {
+		font-size: 1.2em;
+	}
+
+	&:hover {
+		background-color: $clr-spotify-dk;
+	}
+}

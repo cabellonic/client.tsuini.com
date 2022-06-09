@@ -2,7 +2,6 @@
 @import '@scss/components';
 @import '@scss/fontSize';
 @import '@scss/mixin';
-@import '@scss/spacing';
 
 .user_menu {
 	align-items: center;
@@ -13,6 +12,7 @@
 .item {
 	align-items: center;
 	color: inherit;
+	cursor: pointer;
 	display: flex;
 	gap: $spacing-2;
 	height: 100%;
@@ -21,7 +21,8 @@
 	position: relative;
 	text-decoration: none;
 
-	&:hover {
+	&:hover,
+	&.active {
 		background-color: $clr-primary-dk;
 	}
 
@@ -40,12 +41,12 @@
 	border-radius: 100%;
 	display: flex;
 	font-size: 0.65em;
-	min-height: $spacing-4;
 	justify-content: center;
+	min-height: $spacing-4;
+	min-width: $spacing-4;
 	position: absolute;
 	right: $spacing-2;
 	top: calc($header-height / 2 - $spacing-4);
-	min-width: $spacing-4;
 }
 
 .avatar {
@@ -67,4 +68,16 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
+}
+
+.user_menu_list {
+	align-items: center;
+	background-color: $clr-primary-dk;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	position: fixed;
+	right: 0;
+	top: $header-height;
+	width: 250px;
 }

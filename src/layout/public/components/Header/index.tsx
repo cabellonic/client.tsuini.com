@@ -8,8 +8,10 @@ import styles from './index.module.scss';
 const Header: React.FC = () => {
 	return (
 		<header className={styles.header}>
-			<MainMenu />
-			<UserMenu />
+			<div className={styles.header_wrapper}>
+				<MainMenu />
+				<UserMenu />
+			</div>
 		</header>
 	);
 };

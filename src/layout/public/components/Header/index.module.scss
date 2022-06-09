@@ -1,13 +1,21 @@
-@import '@scss/colors';
 @import '@scss/components';
 @import '@scss/spacing';
+@import '@scss/zIndex';
 
 .header {
-	align-items: center;
 	background-color: $clr-primary;
 	color: $clr-text-accent;
+	position: sticky;
+	top: 0;
+	z-index: $z-header;
+}
+
+.header_wrapper {
+	align-items: center;
 	display: flex;
 	gap: $spacing-4;
 	height: $header-height;
 	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 100%; // change if we want to use a max-width
 }
