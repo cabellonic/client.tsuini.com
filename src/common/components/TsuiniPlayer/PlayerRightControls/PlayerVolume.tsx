@@ -21,12 +21,8 @@ const PlayerVolume: React.FC<PlayerVolumeProps> = () => {
 	const player = useSpotifyPlayer();
 
 	useEffect(() => {
-		if (!player) return;
-		const fetchVolume = async () => {
-			const playerVolume = await player.getVolume();
-			setVolume(playerVolume);
-		};
-		fetchVolume();
+		const playerVolume = localStorage.getItem('tsuiniPlayerVolume') || '0.25';
+		setVolume(+playerVolume);
 	}, []);
 
 	const handleVolume = async (volume: number) => {
