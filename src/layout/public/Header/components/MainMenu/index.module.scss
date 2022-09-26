@@ -1,0 +1,25 @@
+@import '@/styles/variables/colors';
+@import '@/styles/variables/spacing';
+
+.main_menu {
+	align-items: center;
+	display: flex;
+	height: 100%;
+}
+
+.main_menu_link,
+.main_menu_link_active {
+	align-items: center;
+	color: $clr-text-accent;
+	display: flex;
+	height: 100%;
+	height: 100%;
+	padding: $spacing-4;
+	text-decoration: none;
+	transition: background-color 0.1s ease-in-out;
+}
+
+.main_menu_link_active,
+.main_menu_link:hover {
+	background-color: rgba(0, 0, 0, 0.25);
+}

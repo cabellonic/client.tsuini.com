@@ -1,0 +1,64 @@
+@import '@/styles/variables/colors';
+@import '@/styles/variables/components';
+@import '@/styles/variables/mixin';
+@import '@/styles/variables/spacing';
+
+.player {
+	background-color: $clr-primary;
+	bottom: 0;
+	color: $clr-text-accent;
+	display: grid;
+	gap: $spacing-0;
+	grid-template-columns: 1fr;
+	height: auto;
+	left: 0;
+	position: absolute;
+	right: 0;
+
+	@include md() {
+		gap: $spacing-4;
+		grid-template-columns: 300px 2fr 300px;
+		height: $player-height;
+	}
+
+	@include lg() {
+		grid-template-columns: 1fr 2fr 1fr;
+	}
+}
+
+.song_info {
+	align-items: center;
+	display: flex;
+	gap: $spacing-4;
+	justify-content: center;
+	padding: $spacing-4;
+}
+
+.song_data {
+	display: flex;
+	flex-flow: column;
+	gap: $spacing-2;
+}
+
+.song_favorite {
+	margin-left: auto;
+}
+
+.player_middle_controls {
+	align-items: center;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+
+	& > span {
+		align-items: center;
+		display: flex;
+		gap: $spacing-1;
+	}
+}
+
+.player_right_controlls {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}

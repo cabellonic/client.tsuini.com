@@ -1,0 +1,30 @@
+@import '@/styles/variables/borderRadius';
+@import '@/styles/variables/colors';
+@import '@/styles/variables/spacing';
+
+.login_menu {
+	align-items: center;
+	display: flex;
+	margin-left: auto;
+}
+
+.login_button {
+	align-items: center;
+	background-color: $clr-spotify;
+	border-radius: $border-radius-max;
+	color: $clr-text-accent;
+	display: flex;
+	gap: $spacing-2;
+	justify-content: center;
+	padding: $spacing-2 $spacing-4;
+	text-decoration: none;
+}
+
+.login_button:hover {
+	background-color: $clr-spotify-lt;
+}
+
+.login_button:active {
+	background-color: $clr-spotify;
+	outline: none;
+}

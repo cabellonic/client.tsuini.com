@@ -1,0 +1,9 @@
+.song_name {
+	color: inherit;
+	font-size: larger;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

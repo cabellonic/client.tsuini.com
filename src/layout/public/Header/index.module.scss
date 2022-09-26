@@ -1,0 +1,15 @@
+@import '@/styles/variables/colors';
+@import '@/styles/variables/components';
+@import '@/styles/variables/spacing';
+
+.main_header {
+	align-items: center;
+	color: $clr-text-accent;
+	display: flex;
+	flex-flow: wrap;
+	height: $header-height;
+	margin: 0 auto;
+	max-width: $header-max-wrapper;
+	padding: 0 $spacing-4;
+	width: 100%;
+}

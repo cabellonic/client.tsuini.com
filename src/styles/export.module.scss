@@ -1,0 +1,40 @@
+@import './variables/colors';
+
+:export {
+	primary: {
+		main: $clr-primary;
+		light: $clr-primary-lt;
+		dark: $clr-primary-dk;
+		contrast-text: $clr-text-accent;
+	}
+	secondary: {
+		main: $clr-secondary;
+		light: $clr-secondary-lt;
+		dark: $clr-secondary-dk;
+		contrast-text: $clr-text-accent;
+	}
+	error: {
+		main: $clr-alert;
+		light: $clr-alert-lt;
+		dark: $clr-alert-dk;
+		contrast-text: $clr-text-accent;
+	}
+	success: {
+		main: $clr-success;
+		light: $clr-success-lt;
+		dark: $clr-success-dk;
+		contrast-text: $clr-text-accent;
+	}
+	warning: {
+		main: $clr-warning;
+		light: $clr-warning-lt;
+		dark: $clr-warning-dk;
+		contrast-text: $clr-text-accent;
+	}
+	info: {
+		main: $clr-info;
+		light: $clr-info-lt;
+		dark: $clr-info-dk;
+		contrast-text: $clr-text-accent;
+	}
+}

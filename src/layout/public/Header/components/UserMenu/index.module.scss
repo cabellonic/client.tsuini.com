@@ -1,0 +1,20 @@
+@import '@/styles/variables/spacing';
+
+.user_menu {
+	align-items: center;
+	display: flex;
+	gap: $spacing-1;
+	margin-left: auto;
+}
+
+.user_info {
+	align-items: center;
+	display: flex;
+	gap: $spacing-2;
+	height: 100%;
+}
+
+.dropdown_link {
+	color: inherit;
+	text-decoration: none;
+}

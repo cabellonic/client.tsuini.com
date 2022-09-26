@@ -1,0 +1,9 @@
+.song_artist {
+	color: inherit;
+	font-size: small;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

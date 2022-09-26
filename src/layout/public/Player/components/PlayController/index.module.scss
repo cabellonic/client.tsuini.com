@@ -1,0 +1,17 @@
+@import '@/styles/variables/colors';
+@import '@/styles/variables/spacing';
+
+.play_controller {
+	grid-area: play_controller;
+}
+
+.play_controller_button_root {
+	background: $clr-text-accent !important;
+	height: 50px;
+	width: 50px;
+}
+
+.play_controller_button_icon {
+	color: $clr-primary;
+	font-size: $spacing-7 !important;
+}

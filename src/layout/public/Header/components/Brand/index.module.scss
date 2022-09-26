@@ -1,0 +1,32 @@
+@import '@/styles/variables/fontSize';
+@import '@/styles/variables/mixin';
+@import '@/styles/variables/spacing';
+
+.brand,
+.brand_active {
+	align-items: center;
+	color: inherit;
+	display: flex;
+	height: 100%;
+	padding: 0 $spacing-4;
+	text-decoration: none;
+	transition: background-color 0.1s ease-in-out;
+}
+
+.brand:hover,
+.brand_active {
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.site_logo {
+	height: $spacing-10;
+	width: $spacing-10;
+
+	@include md() {
+		margin-right: $spacing-2;
+	}
+}
+
+.site_name {
+	font-size: $fs-xl !important;
+}

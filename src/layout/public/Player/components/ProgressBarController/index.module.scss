@@ -1,0 +1,26 @@
+@import '@/styles/variables/components';
+@import '@/styles/variables/spacing';
+
+.progress_bar_wrapper {
+	align-items: center;
+	display: flex;
+	gap: $spacing-4;
+	grid-area: progress_bar;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: $player-progress-bar-width;
+	width: 100%;
+}
+
+.current_time,
+.total_time {
+	width: 100px;
+}
+
+.current_time {
+	text-align: right;
+}
+
+.total_time {
+	text-align: left;
+}

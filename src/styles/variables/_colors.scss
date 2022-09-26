@@ -1,0 +1,77 @@
+// Website colors
+$clr-primary: rgb(3, 56, 85);
+$clr-primary-lt: lighten($clr-primary, 7%);
+$clr-primary-dk: darken($clr-primary, 7%);
+
+$clr-secondary: rgb(65, 147, 210);
+$clr-secondary-lt: lighten($clr-secondary, 7%);
+$clr-secondary-dk: darken($clr-secondary, 7%);
+
+// Text colors
+$clr-text: rgb(26, 27, 39);
+$clr-text-accent: rgb(255, 255, 255);
+
+// Component colores
+$clr-player-buttons: rgb(85, 194, 253);
+
+// UI colors
+$clr-alert: rgb(210, 20, 20);
+$clr-alert-lt: lighten($clr-alert, 7%);
+$clr-alert-dk: darken($clr-alert, 7%);
+
+$clr-success: rgb(73, 145, 73);
+$clr-success-lt: lighten($clr-success, 7%);
+$clr-success-dk: darken($clr-success, 7%);
+
+$clr-warning: rgb(225, 148, 6);
+$clr-warning-lt: lighten($clr-warning, 7%);
+$clr-warning-dk: darken($clr-warning, 7%);
+
+$clr-info: rgb(6, 126, 225);
+$clr-info-lt: lighten($clr-info, 7%);
+$clr-info-dk: darken($clr-info, 7%);
+
+// Brand colors
+$clr-spotify: rgb(29, 185, 84);
+$clr-spotify-lt: lighten($clr-spotify, 7%);
+$clr-spotify-dk: darken($clr-spotify, 7%);
+
+$clr-facebook: rgb(24, 119, 242);
+$clr-facebook-lt: lighten($clr-facebook, 7%);
+$clr-facebook-dk: darken($clr-facebook, 7%);
+
+$clr-twitter: rgb(29, 161, 242);
+$clr-twitter-lt: lighten($clr-twitter, 7%);
+$clr-twitter-dk: darken($clr-twitter, 7%);
+
+$clr-instagram: rgb(225, 48, 108);
+$clr-instagram-lt: lighten($clr-instagram, 7%);
+$clr-instagram-dk: darken($clr-instagram, 7%);
+
+$clr-tiktok: rgb(0, 0, 0);
+$clr-tiktok-lt: lighten($clr-tiktok, 7%);
+$clr-tiktok-dk: darken($clr-tiktok, 7%);
+
+$clr-youtube: rgb(255, 0, 0);
+$clr-youtube-lt: lighten($clr-youtube, 7%);
+$clr-youtube-dk: darken($clr-youtube, 7%);
+
+$clr-youtube-music: rgb(255, 0, 0);
+$clr-youtube-music-lt: lighten($clr-youtube-music, 7%);
+$clr-youtube-music-dk: darken($clr-youtube-music, 7%);
+
+$clr-line: rgb(0, 195, 0);
+$clr-line-lt: lighten($clr-line, 7%);
+$clr-line-dk: darken($clr-line, 7%);
+
+$clr-amazon-music: rgb(20, 110, 180);
+$clr-amazon-music-lt: lighten($clr-amazon-music, 7%);
+$clr-amazon-music-dk: darken($clr-amazon-music, 7%);
+
+$clr-deezer: rgb(0, 199, 242);
+$clr-deezer-lt: lighten($clr-deezer, 7%);
+$clr-deezer-dk: darken($clr-deezer, 7%);
+
+$clr-webpage: rgb(236, 130, 8);
+$clr-webpage-lt: lighten($clr-webpage, 7%);
+$clr-webpage-dk: darken($clr-webpage, 7%);

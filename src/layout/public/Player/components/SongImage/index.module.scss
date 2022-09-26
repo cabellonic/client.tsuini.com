@@ -1,0 +1,28 @@
+@import '@/styles/variables/borderRadius';
+
+.song_image {
+	background-color: white;
+	border-radius: $border-radius-base;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	height: 75px;
+	margin: 0;
+	min-height: 75px;
+	min-width: 75px;
+	overflow: hidden;
+	width: 75px;
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		transition: opacity 0.1s ease-in-out;
+		width: 100%;
+	}
+
+	&:hover {
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px -1px rgba(0, 0, 0, 0.1);
+
+		img {
+			opacity: 0.9;
+		}
+	}
+}
