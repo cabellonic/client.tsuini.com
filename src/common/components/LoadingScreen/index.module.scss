@@ -1,0 +1,24 @@
+@import '@/styles/variables/colors';
+
+.loading_screen {
+	align-items: center;
+	background-color: $clr-primary;
+	color: $clr-text-accent;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	justify-content: center;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.spinner_root {
+	height: 80px !important;
+	width: 80px !important;
+}
+
+.spinner {
+	color: $clr-text-accent;
+}
