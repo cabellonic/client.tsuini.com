@@ -1,6 +1,4 @@
 import React from 'react';
-import { RootState } from '@/redux/store';
-import { useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 // Components
 import Brand from './components/Brand';
@@ -8,6 +6,8 @@ import GuestMenu from './components/GuestMenu';
 import MainMenu from './components/MainMenu';
 import Toggler from './components/Toggler';
 import UserMenu from './components/UserMenu';
+// Hooks
+import { useGetMeQuery } from '@/services';
 // Styles
 import styles from './index.module.scss';
 
@@ -16,7 +16,7 @@ type Props = {
 };
 
 const MainHeader: React.FC<Props> = ({ toggleDrawer }) => {
-	const userState = useSelector((store: RootState) => store.user);
+	const { data: user } = useGetMeQuery();
 
 	return (
 		<AppBar position='static'>
@@ -24,7 +24,7 @@ const MainHeader: React.FC<Props> = ({ toggleDrawer }) => {
 				<Toggler toggleDrawer={toggleDrawer} />
 				<Brand />
 				<MainMenu />
-				{userState.id ? <UserMenu /> : <GuestMenu />}
+				{user ? <UserMenu /> : <GuestMenu />}
 			</section>
 		</AppBar>
 	);

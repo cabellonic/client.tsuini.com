@@ -1,9 +1,7 @@
-import { logout } from '@/redux/states/user';
-import { RootState } from '@/redux/store';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+// MUI Components
 import Logout from '@mui/icons-material/Logout';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Avatar from '@mui/material/Avatar';
@@ -15,23 +13,28 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+// MUI Icons
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+// Services
+import { useGetMeQuery, useLogoutMutation } from '@/services';
 // Styles
 import styles from './index.module.scss';
 
 type Props = {};
 
 const UserMenu: React.FC<Props> = () => {
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
+	const navigate = useNavigate();
 
-	const dispatch = useDispatch();
-	const userState = useSelector((store: RootState) => store.user);
+	const { data: user } = useGetMeQuery();
+	const [logout] = useLogoutMutation();
 
-	const handleLogout = () => {
-		dispatch(logout());
+	const handleLogout = async () => {
+		await logout();
+		navigate(0);
 	};
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -41,6 +44,8 @@ const UserMenu: React.FC<Props> = () => {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	if (!user) return null;
 
 	return (
 		<nav className={styles.user_menu}>
@@ -58,8 +63,8 @@ const UserMenu: React.FC<Props> = () => {
 
 			<Tooltip title='Perfil de usuario'>
 				<MenuItem className={styles.user_info} onClick={handleClick}>
-					<Avatar alt={userState.displayName} sx={{ width: 35, height: 35 }} src={userState.avatar} />
-					<Box sx={{ display: { xs: 'none', md: 'block' } }}>{userState.displayName}</Box>
+					<Avatar alt={user.displayName} sx={{ width: 35, height: 35 }} src={user.avatar} />
+					<Box sx={{ display: { xs: 'none', md: 'block' } }}>{user.displayName}</Box>
 					<KeyboardArrowDownIcon />
 				</MenuItem>
 			</Tooltip>
@@ -101,7 +106,7 @@ const UserMenu: React.FC<Props> = () => {
 			>
 				<Link to='/me' className={styles.dropdown_link}>
 					<MenuItem>
-						<Avatar alt={userState.displayName} src={userState.avatar} />
+						<Avatar alt={user.displayName} src={user.avatar} />
 						Ir a mi perfil
 					</MenuItem>
 				</Link>

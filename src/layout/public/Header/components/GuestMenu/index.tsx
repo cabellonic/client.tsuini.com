@@ -1,19 +1,18 @@
-import { FAKE_USER } from '@/data/user';
-import { login } from '@/redux/states/user';
-import GoogleIcon from '@mui/icons-material/Google';
-import { RootState } from '@/redux/store';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import GoogleIcon from '@mui/icons-material/Google';
 // Styles
 import styles from './index.module.scss';
 
 type Props = {};
 
 const GuestMenu: React.FC<Props> = () => {
-	const dispatch = useDispatch();
-
-	const handleLogin = () => {
-		dispatch(login(FAKE_USER));
+	const handleLogin = async () => {
+		const response = await axios.get(`${import.meta.env.VITE_API_URI}/auth/login`, {
+			withCredentials: true,
+		});
+		const { data } = response;
+		window.open(data.authUrl, '_self');
 	};
 
 	return (
