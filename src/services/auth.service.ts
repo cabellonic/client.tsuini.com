@@ -13,7 +13,14 @@ export const authApi = baseApi.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+
+		refreshToken: builder.mutation<void, void>({
+			query: () => ({
+				url: `/auth/refresh`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
-export const { useGetMeQuery, useLogoutMutation } = authApi;
+export const { useGetMeQuery, useLogoutMutation, useRefreshTokenMutation } = authApi;
