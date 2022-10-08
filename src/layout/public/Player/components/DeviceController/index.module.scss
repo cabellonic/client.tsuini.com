@@ -1,0 +1,13 @@
+.device {
+	border-bottom: 1px solid #e5e5e5 !important;
+	width: 100%;
+	gap: 0.5rem !important;
+
+	&:last-child {
+		border-bottom: none !important;
+	}
+}
+
+.active {
+	color: #10bd44 !important;
+}
