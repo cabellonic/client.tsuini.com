@@ -26,11 +26,12 @@ const ProgressBar: React.FC<Props> = () => {
 
 	const handleMouseUp = async (_event: any, newValue: number | number[]) => {
 		if (!playbackState?.duration || isSeeking) return;
-		setIsChangingPosition(false);
 		try {
 			await setPlaybackSeek(newValue as number);
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setIsChangingPosition(false);
 		}
 	};
 
