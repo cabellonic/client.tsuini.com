@@ -23,13 +23,14 @@ const SoundSlider: React.FC<SoundSliderProps> = ({ volume, handleVolume, isOnMob
 		<Slider
 			aria-label='Volume'
 			orientation={isOnMobile ? 'vertical' : 'horizontal'}
-			defaultValue={30}
+			defaultValue={0.3}
 			value={volume}
 			classes={{
 				vertical: styles.slider_vertical,
 			}}
 			min={0}
-			step={1}
+			max={1}
+			step={0.01}
 			onChange={handleVolume}
 			sx={{
 				// display: { xs: 'none', md: 'flex' },
@@ -61,9 +62,7 @@ const SoundSlider: React.FC<SoundSliderProps> = ({ volume, handleVolume, isOnMob
 
 type VolumeControllerProps = {};
 
-const initialVolume = () => {
-	return +(getFromLocalStorage('tsuini-player-volume') || getFromLocalStorage('tsuini-player-saved-volume', '33'));
-};
+const initialVolume = () => +getFromLocalStorage('tsuini-player-saved-volume', '0.33');
 
 const VolumeController: React.FC<VolumeControllerProps> = () => {
 	const [volume, setVolume] = React.useState(initialVolume);
@@ -80,7 +79,7 @@ const VolumeController: React.FC<VolumeControllerProps> = () => {
 		setVolume(previousVolume => {
 			// Si está muteado, desmuteo con el volumen anterior
 			if (previousVolume === 0) {
-				const savedVolumeFromLocalStorage = getFromLocalStorage('tsuini-player-saved-volume', '33');
+				const savedVolumeFromLocalStorage = getFromLocalStorage('tsuini-player-saved-volume', '0.33');
 				setToLocalStorage('tsuini-player-volume', savedVolume || savedVolumeFromLocalStorage);
 
 				if (savedVolume) return savedVolume;
@@ -98,6 +97,7 @@ const VolumeController: React.FC<VolumeControllerProps> = () => {
 		setToLocalStorage('tsuini-player-volume', newValue.toString());
 		setVolume(newValue as number);
 	};
+
 	return (
 		<>
 			<IconButton
