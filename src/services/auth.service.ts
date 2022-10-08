@@ -14,7 +14,7 @@ export const authApi = baseApi.injectEndpoints({
 			}),
 		}),
 
-		refreshToken: builder.mutation<void, void>({
+		refreshToken: builder.mutation<{ accessToken: string; expires_in: number }, void>({
 			query: () => ({
 				url: `/auth/refresh`,
 				method: 'GET',
