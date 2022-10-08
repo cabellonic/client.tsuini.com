@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // Services
 import { useGetMeQuery, useRefreshTokenMutation } from './services/auth.service';
@@ -7,18 +8,24 @@ import LoadingScreen from './common/components/LoadingScreen';
 // Pages
 import HomePage from './pages/home';
 import NotFoundPage from './pages/not-found';
-import { useCallback, useEffect } from 'react';
 
 function App() {
 	const { isLoading } = useGetMeQuery();
 	const [refreshToken] = useRefreshTokenMutation();
 
 	const getToken = useCallback(async () => {
-		await refreshToken();
+		const result = await refreshToken();
+		if ('data' in result) localStorage.setItem('accessToken', result.data.accessToken);
 	}, []);
 
 	useEffect(() => {
-		const refreshInterval = setInterval(() => getToken(), 1000 * 60 * 10);
+		const refreshInterval = setInterval(
+			(function interval() {
+				getToken();
+				return interval;
+			})(),
+			1000 * 60 * 10,
+		);
 		return () => clearInterval(refreshInterval);
 	}, [getToken]);
 
