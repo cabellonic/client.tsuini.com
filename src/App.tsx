@@ -10,10 +10,11 @@ import HomePage from './pages/home';
 import NotFoundPage from './pages/not-found';
 
 function App() {
-	const { isLoading } = useGetMeQuery();
+	const { data: user, isLoading } = useGetMeQuery();
 	const [refreshToken] = useRefreshTokenMutation();
 
 	const getToken = useCallback(async () => {
+		if (!user) return;
 		const result = await refreshToken();
 		if ('data' in result) localStorage.setItem('accessToken', result.data.accessToken);
 	}, []);
