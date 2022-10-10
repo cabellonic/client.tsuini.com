@@ -32,10 +32,11 @@ export const playerApi = baseApi.injectEndpoints({
 			}),
 		}),
 
-		setPlaybackRepeat: builder.mutation<void, void>({
-			query: () => ({
+		setPlaybackRepeat: builder.mutation<void, 'off' | 'context' | 'track'>({
+			query: state => ({
 				url: '/player/repeat',
 				method: 'PUT',
+				body: { state },
 			}),
 		}),
 
