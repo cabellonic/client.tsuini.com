@@ -142,7 +142,7 @@ const VolumeController: React.FC<VolumeControllerProps> = () => {
 			>
 				{volume === 0 && <VolumeOffIcon sx={{ fontSize: 22 }} />}
 				{volume > 0 && volume < 0.2 && <VolumeMuteIcon sx={{ fontSize: 22 }} />}
-				{volume > 0.2 && volume < 0.5 && <VolumeDownIcon sx={{ fontSize: 22 }} />}
+				{volume >= 0.2 && volume < 0.5 && <VolumeDownIcon sx={{ fontSize: 22 }} />}
 				{volume >= 0.5 && <VolumeUpIcon sx={{ fontSize: 22 }} />}
 			</IconButton>
 
