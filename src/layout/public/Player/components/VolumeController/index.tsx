@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Slider from '@mui/material/Slider';
 import VolumeDownIcon from '@mui/icons-material/VolumeDownRounded';
 import VolumeMuteIcon from '@mui/icons-material/VolumeMuteRounded';
@@ -6,19 +6,23 @@ import VolumeOffIcon from '@mui/icons-material/VolumeOffRounded';
 import VolumeUpIcon from '@mui/icons-material/VolumeUpRounded';
 import IconButton from '@mui/material/IconButton';
 import Popover from '@mui/material/Popover';
+// Hooks
 import useMediaQuery from '@mui/material/useMediaQuery';
+// Context
+import { PlayerContext } from '../../context/player.context';
 // Utils
-import { getFromLocalStorage, setToLocalStorage } from '@/utils/localStorage.utils';
+import * as utils from '@/utils';
 // Styles
 import styles from './index.module.scss';
 
 type SoundSliderProps = {
 	volume: number;
-	handleVolume: (event: any, value: number | number[]) => void;
+	handleChange: (event: any, value: number | number[]) => void;
+	handleChangeCommitted: (event: any, value: number | number[]) => void;
 	isOnMobile?: boolean;
 };
 
-const SoundSlider: React.FC<SoundSliderProps> = ({ volume, handleVolume, isOnMobile }) => {
+const SoundSlider: React.FC<SoundSliderProps> = ({ volume, handleChange, handleChangeCommitted, isOnMobile }) => {
 	return (
 		<Slider
 			aria-label='Volume'
@@ -31,7 +35,8 @@ const SoundSlider: React.FC<SoundSliderProps> = ({ volume, handleVolume, isOnMob
 			min={0}
 			max={1}
 			step={0.01}
-			onChange={handleVolume}
+			onChange={handleChange}
+			onChangeCommitted={handleChangeCommitted}
 			sx={{
 				// display: { xs: 'none', md: 'flex' },
 				height: 6,
@@ -62,12 +67,14 @@ const SoundSlider: React.FC<SoundSliderProps> = ({ volume, handleVolume, isOnMob
 
 type VolumeControllerProps = {};
 
-const initialVolume = () => +getFromLocalStorage('tsuini-player-saved-volume', '0.33');
+const DEFAULT_VOLUME = parseFloat(utils.getFromLocalStorage('tsuini-player-volume', '0.3'));
 
 const VolumeController: React.FC<VolumeControllerProps> = () => {
-	const [volume, setVolume] = React.useState(initialVolume);
-	const [savedVolume, setSavedVolume] = React.useState(initialVolume);
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+	const { tsuiniPlayer } = useContext(PlayerContext);
+	const [volume, setVolume] = useState<number>(DEFAULT_VOLUME);
+	const [savedVolume, setSavedVolume] = useState<number>(DEFAULT_VOLUME);
+
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const isOnMobile = useMediaQuery('(max-width: 768px)');
 
@@ -75,42 +82,69 @@ const VolumeController: React.FC<VolumeControllerProps> = () => {
 		setAnchorEl(p => (!p ? event.currentTarget : null));
 	};
 
-	const handleMuted = () => {
-		setVolume(previousVolume => {
-			// Si está muteado, desmuteo con el volumen anterior
-			if (previousVolume === 0) {
-				const savedVolumeFromLocalStorage = getFromLocalStorage('tsuini-player-saved-volume', '0.33');
-				setToLocalStorage('tsuini-player-volume', savedVolume || savedVolumeFromLocalStorage);
+	const handleChange = async (_event: any, value: number | number[]) => {
+		if (Array.isArray(value)) return;
 
-				if (savedVolume) return savedVolume;
-				return +savedVolumeFromLocalStorage;
+		try {
+			if (tsuiniPlayer) await tsuiniPlayer.setVolume(value);
+			setVolume(value);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const handleChangeCommitted = async (_event: any, value: number | number[]) => {
+		if (value > 0) utils.setToLocalStorage('tsuini-player-volume', value);
+	};
+
+	const handleMute = async () => {
+		if (volume > 0) {
+			try {
+				if (tsuiniPlayer) await tsuiniPlayer.setVolume(0);
+				setSavedVolume(volume);
+				setVolume(0);
+			} catch (error) {
+				console.error(error);
 			}
-			// Si no está muteado, guardo el volumen anterior y lo muteo
-			setSavedVolume(previousVolume);
-			setToLocalStorage('tsuini-player-saved-volume', previousVolume.toString());
-			setToLocalStorage('tsuini-player-volume', '0');
-			return 0;
-		});
+		} else {
+			try {
+				if (tsuiniPlayer) await tsuiniPlayer.setVolume(savedVolume);
+				setVolume(savedVolume);
+			} catch (error) {
+				console.error(error);
+			}
+		}
 	};
 
-	const handleVolume = (_event: Event, newValue: number | number[]) => {
-		setToLocalStorage('tsuini-player-volume', newValue.toString());
-		setVolume(newValue as number);
-	};
+	useEffect(() => {
+		const fetchVolume = async () => {
+			if (!tsuiniPlayer) return;
+
+			try {
+				const volume = await tsuiniPlayer.getVolume();
+				setVolume(volume);
+				setSavedVolume(volume);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchVolume();
+	}, [tsuiniPlayer]);
 
 	return (
 		<>
 			<IconButton
 				sx={{ color: 'white', mr: 1 }}
+				classes={{ root: styles.iconButton }}
 				onClick={e => {
 					if (isOnMobile) return toggleVolumeMenu(e);
-					else handleMuted();
+					else handleMute();
 				}}
 			>
 				{volume === 0 && <VolumeOffIcon sx={{ fontSize: 22 }} />}
-				{volume > 0 && volume < 20 && <VolumeMuteIcon sx={{ fontSize: 22 }} />}
-				{volume > 20 && volume < 50 && <VolumeDownIcon sx={{ fontSize: 22 }} />}
-				{volume >= 50 && <VolumeUpIcon sx={{ fontSize: 22 }} />}
+				{volume > 0 && volume < 0.2 && <VolumeMuteIcon sx={{ fontSize: 22 }} />}
+				{volume > 0.2 && volume < 0.5 && <VolumeDownIcon sx={{ fontSize: 22 }} />}
+				{volume >= 0.5 && <VolumeUpIcon sx={{ fontSize: 22 }} />}
 			</IconButton>
 
 			{isOnMobile ? (
@@ -136,10 +170,15 @@ const VolumeController: React.FC<VolumeControllerProps> = () => {
 					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
 					transformOrigin={{ vertical: 'top', horizontal: 'center' }}
 				>
-					<SoundSlider volume={volume} handleVolume={handleVolume} isOnMobile />
+					<SoundSlider
+						volume={volume}
+						handleChange={handleChange}
+						handleChangeCommitted={handleChangeCommitted}
+						isOnMobile
+					/>
 				</Popover>
 			) : (
-				<SoundSlider volume={volume} handleVolume={handleVolume} />
+				<SoundSlider volume={volume} handleChange={handleChange} handleChangeCommitted={handleChangeCommitted} />
 			)}
 		</>
 	);
