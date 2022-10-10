@@ -34,6 +34,7 @@ const UserMenu: React.FC<Props> = () => {
 
 	const handleLogout = async () => {
 		await logout();
+		localStorage.removeItem('accessToken');
 		navigate(0);
 	};
 

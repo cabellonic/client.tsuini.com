@@ -13,6 +13,7 @@ import SongArtist from './components/SongArtist';
 import SongImage from './components/SongImage';
 import SongName from './components/SongName';
 import VolumeController from './components/VolumeController';
+import PlayerProvider from './context/player.context';
 // Styles
 import styles from './index.module.scss';
 
@@ -20,36 +21,38 @@ type Props = {};
 
 const Player: React.FC<Props> = () => {
 	return (
-		<section className={styles.player}>
-			<div className={styles.song_info}>
-				<SongImage />
+		<PlayerProvider>
+			<section className={styles.player}>
+				<div className={styles.song_info}>
+					<SongImage />
 
-				<span className={styles.song_data}>
-					<SongName />
-					<SongArtist />
-				</span>
+					<span className={styles.song_data}>
+						<SongName />
+						<SongArtist />
+					</span>
 
-				<span className={styles.song_favorite}>
-					<FavoriteController />
-				</span>
-			</div>
-			<div className={styles.player_middle_controls}>
-				<span>
-					<ShuffleController />
-					<PreviousSongController />
-					<PlayController />
-					<NextSongController />
-					<RepeatController />
-				</span>
-				<ProgressBarController />
-			</div>
+					<span className={styles.song_favorite}>
+						<FavoriteController />
+					</span>
+				</div>
+				<div className={styles.player_middle_controls}>
+					<span>
+						<ShuffleController />
+						<PreviousSongController />
+						<PlayController />
+						<NextSongController />
+						<RepeatController />
+					</span>
+					<ProgressBarController />
+				</div>
 
-			<div className={styles.player_right_controlls}>
-				<DeviceController />
-				<LyricsController />
-				<VolumeController />
-			</div>
-		</section>
+				<div className={styles.player_right_controlls}>
+					<DeviceController />
+					<LyricsController />
+					<VolumeController />
+				</div>
+			</section>
+		</PlayerProvider>
 	);
 };
 

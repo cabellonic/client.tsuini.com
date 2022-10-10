@@ -1,31 +1,57 @@
-import React from 'react';
+import { useContext, useEffect, useState } from 'react';
+// Components
 import Slider from '@mui/material/Slider';
+// Context
+import { PlayerContext } from '../../context/player.context';
+// Service
+import { useSetPlaybackSeekMutation } from '@/services';
+// Utils
+import * as utils from '@/utils';
 // Styles
 import styles from './index.module.scss';
 
 type Props = {};
 
-function formatDuration(value: number) {
-	const minute = Math.floor(value / 60);
-	const secondLeft = value - minute * 60;
-	return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
-}
-
 const ProgressBar: React.FC<Props> = () => {
-	const [position, setPosition] = React.useState(32);
-	const duration = 200;
+	const [position, setPosition] = useState<number>(0);
+	const [isChangingPosition, setIsChangingPosition] = useState<boolean>(false);
+	const { playbackState } = useContext(PlayerContext);
+	const [setPlaybackSeek, { isLoading: isSeeking }] = useSetPlaybackSeekMutation();
+
+	useEffect(() => {
+		if (!isChangingPosition) setPosition(playbackState?.position ?? 0);
+	}, [playbackState?.position]);
+
+	const handleChangeCommitted = async (_event: any, newValue: number | number[]) => {
+		if (!playbackState?.duration || isSeeking) return;
+		try {
+			await setPlaybackSeek(newValue as number);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsChangingPosition(false);
+		}
+	};
+
+	const handleChange = (_event: any, newValue: number | number[]) => {
+		if (!playbackState?.duration) return;
+		setIsChangingPosition(true);
+		setPosition(newValue as number);
+	};
 
 	return (
 		<section className={styles.progress_bar_wrapper}>
-			<span className={styles.current_time}>{formatDuration(position)}</span>
+			<span className={styles.current_time}>{utils.msToTimeFormat(position)}</span>
 			<Slider
 				aria-label='time-indicator'
 				size='small'
-				value={position}
+				disabled={!Boolean(playbackState)}
+				value={position || 0}
 				min={0}
 				step={1}
-				max={duration}
-				onChange={(_, value) => setPosition(+value)}
+				max={playbackState?.duration || 0}
+				onChange={handleChange}
+				onChangeCommitted={handleChangeCommitted}
 				sx={{
 					height: 8,
 					color: '#fff',
@@ -36,6 +62,9 @@ const ProgressBar: React.FC<Props> = () => {
 						// '&:before': {
 						// 	boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',
 						// },
+						'&.Mui-disabled': {
+							opacity: 0.5,
+						},
 						backgroundColor: '#fff',
 						'&:before': {
 							boxShadow: '0 4px 8px rgba(0,0,0,0.4)',
@@ -53,7 +82,7 @@ const ProgressBar: React.FC<Props> = () => {
 					},
 				}}
 			/>
-			<span className={styles.total_time}>{formatDuration(duration)}</span>
+			<span className={styles.total_time}>{utils.msToTimeFormat(playbackState?.duration)}</span>
 		</section>
 	);
 };

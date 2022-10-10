@@ -17,12 +17,12 @@
 
 	@include md() {
 		gap: $spacing-4;
-		grid-template-columns: 300px 2fr 300px;
-		height: $player-height;
+		grid-template-columns: 350px 1fr 300px;
+		min-height: $player-height;
 	}
 
 	@include lg() {
-		grid-template-columns: 1fr 2fr 1fr;
+		grid-template-columns: 1fr 1.75fr 1fr;
 	}
 }
 
@@ -37,7 +37,6 @@
 .song_data {
 	display: flex;
 	flex-flow: column;
-	gap: $spacing-2;
 }
 
 .song_favorite {

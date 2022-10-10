@@ -1,6 +1,14 @@
+@import '@/styles/variables/fontSize';
+@import '@/styles/variables/spacing';
+
+.song_artists {
+	display: inline-block;
+	margin-top: $spacing-1;
+}
+
 .song_artist {
 	color: inherit;
-	font-size: small;
+	font-size: $fs-xs;
 	text-decoration: none;
 
 	&:hover {

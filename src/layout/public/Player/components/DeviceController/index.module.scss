@@ -1,0 +1,25 @@
+.device_controller[data-active='true'] svg {
+	color: rgba(255, 255, 255, 0.8);
+
+	&:hover {
+		color: rgb(255, 255, 255);
+	}
+}
+
+.device_controller[data-active='false'] svg {
+	color: rgba(255, 255, 255, 0.3);
+}
+
+.device {
+	border-bottom: 1px solid #e5e5e5 !important;
+	gap: 0.5rem !important;
+	width: 100%;
+
+	&:last-child {
+		border-bottom: none !important;
+	}
+}
+
+.active {
+	color: #10bd44 !important;
+}

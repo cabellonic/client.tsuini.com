@@ -1,12 +1,13 @@
+@import '@/styles/variables/borderRadius';
 @import '@/styles/variables/colors';
 @import '@/styles/variables/spacing';
 
 .play_controller {
+	border-radius: $border-radius-circle;
 	grid-area: play_controller;
 }
 
 .play_controller_button_root {
-	background: $clr-text-accent !important;
 	height: 50px;
 	width: 50px;
 }
@@ -14,4 +15,16 @@
 .play_controller_button_icon {
 	color: $clr-primary;
 	font-size: $spacing-7 !important;
+}
+
+.play_controller[data-active='true'] {
+	background: rgba(255, 255, 255, 0.8);
+
+	&:hover {
+		background: rgb(255, 255, 255);
+	}
+}
+
+.play_controller[data-active='false'] {
+	background: rgba(255, 255, 255, 0.3);
 }

@@ -1,3 +1,15 @@
 .repeat_controller {
 	grid-area: repeat_controller;
 }
+
+.repeat_controller[data-active='true'] svg {
+	color: rgba(255, 255, 255, 0.8);
+
+	&:hover {
+		color: rgb(255, 255, 255);
+	}
+}
+
+.repeat_controller[data-active='false'] svg {
+	color: rgba(255, 255, 255, 0.3);
+}
