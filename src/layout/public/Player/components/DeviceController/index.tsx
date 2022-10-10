@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 // MUI Components
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
@@ -30,9 +30,13 @@ const DeviceController: React.FC<Props> = () => {
 	const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
 		if (!localDeviceId) return;
 		setAnchorEl(event.currentTarget);
-		const result = await getPlaybackDevices();
-		if ('data' in result) setDevices(result.data);
-		if ('data' in result) console.log(result.data);
+
+		try {
+			const result = await getPlaybackDevices();
+			if ('data' in result) setDevices(result.data);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const handleClose = () => setAnchorEl(null);
@@ -43,9 +47,11 @@ const DeviceController: React.FC<Props> = () => {
 
 	return (
 		<>
-			<IconButton sx={{ color: 'white' }} onClick={handleClick}>
-				<DevicesIcon sx={{ fontSize: 20 }} />
-			</IconButton>
+			<span className={styles.device_controller} data-active={Boolean(localDeviceId)} onClick={handleClick}>
+				<IconButton disabled={!Boolean(localDeviceId)}>
+					<DevicesIcon sx={{ fontSize: 20 }} />
+				</IconButton>
+			</span>
 
 			<Menu
 				anchorEl={anchorEl}
