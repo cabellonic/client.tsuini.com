@@ -1,3 +1,15 @@
 .next_song_controller {
 	grid-area: next_song_controller;
 }
+
+.next_song_controller[data-active='true'] svg {
+	color: rgba(255, 255, 255, 0.8);
+
+	&:hover {
+		color: rgb(255, 255, 255);
+	}
+}
+
+.next_song_controller[data-active='false'] svg {
+	color: rgba(255, 255, 255, 0.3);
+}
