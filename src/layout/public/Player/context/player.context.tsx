@@ -1,12 +1,16 @@
 import { useEffect, useState, createContext } from 'react';
+// Utils
+import * as utils from '@/utils';
 
-const DEFAULT_VOLUME = 0.5;
+const INITIAL_VOLUME = parseFloat(utils.getFromLocalStorage('tsuini-player-volume', '0.33'));
 
 export type PlayerContextType = {
 	tsuiniPlayer: Spotify.Player | null;
 	localDeviceId: string | null;
 	playbackState: Spotify.PlaybackState | null;
 	currentTrack: Spotify.Track | null;
+	previousTracks: Array<Spotify.Track>;
+	nextTracks: Array<Spotify.Track>;
 };
 
 const PlayerContextInitialState: PlayerContextType = {
@@ -14,6 +18,8 @@ const PlayerContextInitialState: PlayerContextType = {
 	localDeviceId: null,
 	playbackState: null,
 	currentTrack: null,
+	previousTracks: [],
+	nextTracks: [],
 };
 
 export const PlayerContext = createContext<PlayerContextType>(PlayerContextInitialState);
@@ -27,8 +33,8 @@ const PlayerProvider: React.FC<Props> = ({ children }) => {
 	const [localDeviceId, setLocalDeviceId] = useState<string | null>(null);
 	const [playbackState, setPlaybackState] = useState<Spotify.PlaybackState | null>(null);
 	const [currentTrack, setCurrentTrack] = useState<Spotify.Track | null>(null);
-	const [previousTracks, setPreviousTracks] = useState<Array<Spotify.Track> | null>(null);
-	const [nextTracks, setNextTracks] = useState<Array<Spotify.Track> | null>(null);
+	const [previousTracks, setPreviousTracks] = useState<Array<Spotify.Track>>([]);
+	const [nextTracks, setNextTracks] = useState<Array<Spotify.Track>>([]);
 
 	const loadSpotifyScript = () => {
 		const script = document.createElement('script');
@@ -40,7 +46,6 @@ const PlayerProvider: React.FC<Props> = ({ children }) => {
 
 	const createPlayer = (): Spotify.Player | null => {
 		const accessToken = localStorage.getItem('accessToken');
-		const volume = parseFloat(localStorage.getItem('tsuini-player-volume') ?? DEFAULT_VOLUME.toString());
 
 		if (!accessToken) return null;
 
@@ -49,18 +54,18 @@ const PlayerProvider: React.FC<Props> = ({ children }) => {
 			getOAuthToken: callback => {
 				callback(accessToken);
 			},
-			volume,
+			volume: INITIAL_VOLUME,
 		});
 	};
 
 	const onPlayerReady = ({ device_id }: { device_id: string }) => setLocalDeviceId(device_id);
 
 	const onPlayerStateChange = (state: Spotify.PlaybackState) => {
-		if (!state) return;
+		if (!state?.track_window) return;
 		setPlaybackState({ ...state });
-		setCurrentTrack({ ...state?.track_window?.current_track });
-		setPreviousTracks({ ...state?.track_window?.previous_tracks });
-		setNextTracks({ ...state?.track_window?.next_tracks });
+		setCurrentTrack({ ...state.track_window.current_track });
+		setPreviousTracks([...state.track_window.previous_tracks]);
+		setNextTracks([...state.track_window.next_tracks]);
 	};
 
 	useEffect(() => {
@@ -96,7 +101,9 @@ const PlayerProvider: React.FC<Props> = ({ children }) => {
 	}, [playbackState?.paused]);
 
 	return (
-		<PlayerContext.Provider value={{ tsuiniPlayer, localDeviceId, playbackState, currentTrack }}>
+		<PlayerContext.Provider
+			value={{ tsuiniPlayer, localDeviceId, playbackState, currentTrack, previousTracks, nextTracks }}
+		>
 			{children}
 		</PlayerContext.Provider>
 	);
