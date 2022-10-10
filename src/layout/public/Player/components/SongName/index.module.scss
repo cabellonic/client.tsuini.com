@@ -1,7 +1,14 @@
+@import '@/styles/variables/fontSize';
+
 .song_name {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 	color: inherit;
-	font-size: larger;
+	display: -webkit-box;
+	font-size: $fs-base;
+	overflow: hidden;
 	text-decoration: none;
+	text-overflow: ellipsis;
 
 	&:hover {
 		text-decoration: underline;
