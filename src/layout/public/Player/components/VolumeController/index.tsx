@@ -135,7 +135,6 @@ const VolumeController: React.FC<VolumeControllerProps> = () => {
 		<>
 			<IconButton
 				sx={{ color: 'white', mr: 1 }}
-				classes={{ root: styles.iconButton }}
 				onClick={e => {
 					if (isOnMobile) return toggleVolumeMenu(e);
 					else handleMute();
