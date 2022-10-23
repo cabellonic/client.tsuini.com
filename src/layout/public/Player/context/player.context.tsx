@@ -73,7 +73,7 @@ const PlayerProvider: React.FC<Props> = ({ children }) => {
 
 		window.onSpotifyWebPlaybackSDKReady = async () => {
 			const tsuiniPlayer = createPlayer();
-			if (!tsuiniPlayer) return;
+			if (!tsuiniPlayer) return console.error('Could not create player, no access token found.');
 
 			tsuiniPlayer.addListener('ready', onPlayerReady);
 			tsuiniPlayer.addListener('player_state_changed', onPlayerStateChange);
