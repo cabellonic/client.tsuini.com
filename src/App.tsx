@@ -14,12 +14,12 @@ function App() {
 	const [refreshToken] = useRefreshTokenMutation();
 
 	const getToken = useCallback(async () => {
-		if (!user) return;
 		const result = await refreshToken();
 		if ('data' in result) localStorage.setItem('accessToken', result.data.accessToken);
 	}, []);
 
 	useEffect(() => {
+		if (!user) return;
 		const refreshInterval = setInterval(
 			(function interval() {
 				getToken();
@@ -28,7 +28,7 @@ function App() {
 			1000 * 60 * 10,
 		);
 		return () => clearInterval(refreshInterval);
-	}, [getToken]);
+	}, [user, getToken]);
 
 	if (isLoading) return <LoadingScreen />;
 
