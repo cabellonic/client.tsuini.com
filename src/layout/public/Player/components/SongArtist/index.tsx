@@ -16,7 +16,7 @@ const SongArtist: React.FC<Props> = () => {
 		<div className={styles.song_artists}>
 			{currentTrack.artists.map((artist, index) => (
 				<span key={artist.uri}>
-					<Link className={styles.song_artist} to='/'>
+					<Link className={styles.song_artist} to={`/artists/${artist.uri.split(':')[2]}`}>
 						{artist.name}
 					</Link>
 					{index < currentTrack.artists.length - 1 && ', '}
