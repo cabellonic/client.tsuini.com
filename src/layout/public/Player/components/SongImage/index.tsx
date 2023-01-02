@@ -14,7 +14,7 @@ const SongImage: React.FC<Props> = () => {
 
 	return (
 		<Link to='/' className={styles.song_image}>
-			<img src={currentTrack.album.images[0].url} alt={currentTrack.name} />
+			<img src={currentTrack.album?.images[0]?.url} alt={currentTrack.name} />
 		</Link>
 	);
 };
