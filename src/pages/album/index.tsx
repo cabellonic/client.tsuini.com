@@ -1,6 +1,7 @@
 import { useCreateAlbumMutation, useGetAlbumByIDQuery, useGetMeQuery } from '@/services';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import SongList from './components/SongList';
 
 const AlbumPage = () => {
 	const { id } = useParams();
@@ -41,6 +42,7 @@ const AlbumPage = () => {
 				</span>
 			)}
 			<h2>Album: {album.name}</h2>
+			<SongList album={album} songs={album.songs} />
 			<hr />
 			{isFromSpotify && (
 				<div>
