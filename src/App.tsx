@@ -6,7 +6,7 @@ import { useGetMeQuery, useRefreshTokenMutation } from './services/auth.service'
 import PublicLayout from './layout/public';
 import LoadingScreen from './common/components/LoadingScreen';
 // Pages
-import { HomePage, ArtistPage, NotFoundPage } from './pages';
+import { HomePage, ArtistPage, AlbumPage, NotFoundPage } from './pages';
 
 function App() {
 	const { data: user, isLoading } = useGetMeQuery();
@@ -36,6 +36,7 @@ function App() {
 			<Route path='/' element={<PublicLayout />}>
 				<Route index element={<HomePage />} />
 				<Route path='/artists/:id' element={<ArtistPage />} />
+				<Route path='/albums/:id' element={<AlbumPage />} />
 				<Route path='*' element={<NotFoundPage />} />
 			</Route>
 		</Routes>
