@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 // Services
 import { useGetMeQuery, useRefreshTokenMutation } from './services/auth.service';
 // Components
-import PublicLayout from './layout/public';
 import LoadingScreen from './common/components/LoadingScreen';
+import PublicLayout from './layout/public';
 // Pages
-import { HomePage, ArtistPage, AlbumPage, NotFoundPage } from './pages';
+import { AlbumPage, ArtistPage, HomePage, SongPage, NotFoundPage } from './pages';
 
 function App() {
 	const { data: user, isLoading } = useGetMeQuery();
@@ -37,6 +37,7 @@ function App() {
 				<Route index element={<HomePage />} />
 				<Route path='/artists/:id' element={<ArtistPage />} />
 				<Route path='/albums/:id' element={<AlbumPage />} />
+				<Route path='/songs/:id' element={<SongPage />} />
 				<Route path='*' element={<NotFoundPage />} />
 			</Route>
 		</Routes>

@@ -1,3 +1,5 @@
+import { ArtistEntity, AlbumEntity, UserEntity } from './index';
+
 export interface SongEntity {
 	id: string;
 	name: string;
@@ -5,4 +7,7 @@ export interface SongEntity {
 	duration: number;
 	spotifyUrl: string;
 	trackNumber: number;
+	uploader: UserEntity;
+	artists: Array<ArtistEntity>;
+	album: AlbumEntity;
 }

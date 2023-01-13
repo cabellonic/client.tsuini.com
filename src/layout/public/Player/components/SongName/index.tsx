@@ -13,7 +13,7 @@ const SongName: React.FC<Props> = () => {
 	if (!currentTrack) return null;
 
 	return (
-		<Link className={styles.song_name} to='/'>
+		<Link className={styles.song_name} to={`/songs/${currentTrack.id}`}>
 			{currentTrack.name}
 		</Link>
 	);
