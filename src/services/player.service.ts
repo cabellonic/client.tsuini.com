@@ -18,10 +18,14 @@ export const playerApi = baseApi.injectEndpoints({
 			}),
 		}),
 
-		setPlaybackPlay: builder.mutation<void, void>({
-			query: () => ({
+		setPlaybackPlay: builder.mutation<
+			void,
+			{ context_uri?: string; offset?: { uri?: string; position?: string | number } }
+		>({
+			query: context => ({
 				url: '/player/play',
 				method: 'PUT',
+				body: context,
 			}),
 		}),
 
