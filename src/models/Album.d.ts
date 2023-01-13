@@ -1,5 +1,6 @@
 import { ArtistEntity } from './Artist';
 import { UserEntity } from './User';
+import { SongEntity } from './Song';
 
 export interface AlbumEntity {
 	id: string;
@@ -12,4 +13,5 @@ export interface AlbumEntity {
 	totalSongs: number;
 	uploader: UserEntity;
 	artists: Array<ArtistEntity>;
+	songs: Array<SongEntity>;
 }
