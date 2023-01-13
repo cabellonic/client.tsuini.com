@@ -19,7 +19,7 @@ const PlayController: React.FC<Props> = () => {
 	const togglePlay = async () => {
 		if (!playbackState || isSettingPlay || isSettingPause) return;
 		try {
-			if (playbackState.paused) await setPlay();
+			if (playbackState.paused) await setPlay({});
 			else await setPause();
 		} catch (error) {
 			console.log(error);
